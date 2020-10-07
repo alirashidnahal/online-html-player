@@ -1,5 +1,5 @@
 <!doctype html>
-<html dir="rtl" lang="fa-IR">
+<html lang="fa-IR" dir="rtl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lateef&display=swap">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 
     <title>پخش کننده ویدیو HTML5</title>
 </head>
@@ -29,16 +30,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="https://alirashidnahal.com/fun-projects/" title="پروژه‌هایی برای تفریح">خانه <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="https://alirashidnahal.com/fun-projects/" title="پروژه‌هایی برای تفریح" rel="bookmark">خانه <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" type="button" data-toggle="modal" data-target="#aboutModal">درباره</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/alirashidnahal" target="_blank" title="این پروژه را در گیت ببینید">Git</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" type="button" data-toggle="modal" data-target="#errorModal">گزارش خطاها</a>
+                    <a class="nav-link" href="https://github.com/alirashidnahal/online-html-player" target="_blank" title="این پروژه را در گیت ببینید">Git</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,6 +94,7 @@
     </div>
 </section>
 
+<!-- About Modal -->
 <div class="modal fade" id="aboutModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -118,25 +117,8 @@
         </div>
     </div>
 </div>
+<!-- ./About Modal -->
 
-<div class="modal fade" id="errorModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">گزارش خطا</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">خروج</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Footer -->
 <footer>
 
