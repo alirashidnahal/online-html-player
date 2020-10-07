@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lateef&display=swap">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="online-html-player/style.css">
 
     <title>پخش کننده ویدیو HTML5</title>
 </head>
@@ -65,7 +65,7 @@
 <section class="main-player">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h1 class="text-center text-info my-3">پخش کننده رسانه آنلاین</h1>
                 <div class="database-area">
                     <form class="form-group" method="post">
@@ -83,7 +83,7 @@
             </div>
 
 
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="player-area mt-3">
                     <video id="my-video-stream" controls autoplay loop buffered duration volume width="100%" height="auto" preload="metadata" >
                         <source src="<?php if (isset($_POST['playfilm'])) {$onlinefilmurl = $_POST['filmurl']; echo "$onlinefilmurl";}  else {echo "https://alirashidnahal.com/fun-projects/tv-stream/demo.mp4";}?>" type="video/mp4">
@@ -94,38 +94,13 @@
     </div>
 </section>
 
-<!-- About Modal -->
-<div class="modal fade" id="aboutModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">درباره این نرم افزار</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h2 class="text-center">Online TV Stream</h2>
-                <p>طراحی و توسعه: علی رشیدنهال<br />نسخه پایه: v1.3.0<br />فناوری&zwnj;های مورد استفاده:<br />PHP v7.3.3 | HTML v5 | CSS v3 | JavaScript | JQuery v3.4.1 | Bootstrap v4.4.1 | Google Font API (Lateef Arabic Font)</p>
-                <p>مرورگر مورد نیاز:<br />Chrome v49 | Firefox v30 | Safari v10 | Opera v18 | Internet Explorer v10 | Microsoft Edge v75 and newer</p>
-                <p>لایسنس:<br />GNU General Public License v2 or later</p>
-                <p class="text-justify">این برنامه مثل وردپرس و سایر اپلیکیشن ها به زبان PHP تحت لایسنس GPL ارائه میشه که شما هم میتونید با استفاده از اون یه چیز خارق العاده دیگه بسازید، باهاش خوش باشید؛ و به هر روشی برای انتقال دانش منتشرش کنید. (البته که ذکر منبع یکی از روش هایی هست که میتونید از این پروژه حمایت کنید)</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">خروج</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ./About Modal -->
-
 <!-- Footer -->
 <footer>
 
-    <!-- <div class="bug-reporter">
+    <div class="bug-reporter">
         <button class="btn btn--chat js-chat"><i class="fa fa-bug"></i></button>
         <div class="chatbox js-chatbox">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="reporter.php" method="post" enctype="multipart/form-data">
                 <div class="form-group row">
                     <label for="user-ip" class="col-sm-3 col-form-label">آدرس IP شما:</label>
                     <div class="col-sm-9">
@@ -172,8 +147,8 @@
                 </div>
                 <button type="submit" name="send-error" class="btn btn-primary">ارسال گزارش خطا</button>
             </form>
-        </div> 
-    </div>End of .bug-reporter -->
+        </div>
+    </div><!--End of .bug-reporter -->
 
     <!-- Copyright -->
     <div class="badge-light fixed-bottom footer-copyright py-3 text-center">© 2020 Copyright:
@@ -181,89 +156,34 @@
     </div>
     <!-- Copyright -->
 
-</footer>
-<?php
-if (isset($_POST['send-error'])) {
-    $user_ip = $_POST["user-ip"];
-    $user_browser = $_POST["user-browser"];
-    $user_http_code = $_POST["user-http-code"];
-    $user_page_url = $_POST["user-page-url"];
-    $user_protocol = $_POST["user-protocol"];
-    $user_request_method = $_POST["user-request-method"];
-    $user_massage = $_POST["user-massage"];
-}
-$admin_mail = 'alirashidnahal@yahoo.com';
-$mail_subject = 'Bug Reporter > TV Stream';
-$mail_message = '
-<html lang="fa" dir="rtl">
-<head>
-  <title>Bug Reporter</title>
-</head>
-<body>
-  <h1 style="text-align: center">Report a bug From Tv Stream</h1>
-  <figure style="text-align: center">
-    <table style="text-align: center;font-size:14pt">
-        <thead>
-        <tr>
-            <th>ردیف</th>
-            <th>اطلاعات خطا</th>
-            <th>توضیحات</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>1</td>
-            <td>آدرس IP کاربر</td>
-            <td>'.$user_ip.'</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>نسخه مرورگر کاربر</td>
-            <td>'.$user_browser.'</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>کد HTTP</td>
-            <td>'.$user_http_code.'</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>آدرس رخ دادن خطا</td>
-            <td>'.$user_page_url.'</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>پروتکل HTTP</td>
-            <td>'.$user_protocol.'</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>متد درخواست HTTP</td>
-            <td>'.$user_request_method.'</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>پیام کاربر</td>
-            <td>'.$user_massage.'</td>
-        </tr>
-        </tbody>
-    </table>
-    <figcaption>این ایمیل بصورت خودکار و توسط سامانه گزارشگر خطا ایجاد شده است.</figcaption>
-</figure>
-</body>
-</html>
-';
-$headers[] = 'MIME-Version: 1.0';
-$headers[] = 'Content-type: text/html; charset=iso-8859-1';
-$headers[] = 'To: Ali Rashidnahal <alirashidnahal@yahoo.com>';
-$headers[] = 'From: Bug Reporter <admin@alirashidnahal.com>';
-$headers[] = 'X-Mailer: PHP/' . phpversion();
+</footer><!-- Footer -->
 
-mail($admin_mail, $mail_subject, $mail_message, implode("\r\n", $headers));
+<!-- About Modal -->
+<div class="modal fade" id="aboutModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">درباره این نرم افزار</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="text-center">Online TV Stream</h2>
+                <p>طراحی و توسعه: علی رشیدنهال<br />نسخه پایه: v1.3.0<br />فناوری&zwnj;های مورد استفاده:<br />PHP v7.3.3 | HTML v5 | CSS v3 | JavaScript | JQuery v3.4.1 | Bootstrap v4.4.1 | Google Font API (Lateef Arabic Font)</p>
+                <p>مرورگر مورد نیاز:<br />Chrome v49 | Firefox v30 | Safari v10 | Opera v18 | Internet Explorer v10 | Microsoft Edge v75 and newer</p>
+                <p>لایسنس:<br />GNU General Public License v2 or later</p>
+                <p class="text-justify">این برنامه مثل وردپرس و سایر اپلیکیشن ها به زبان PHP تحت لایسنس GPL ارائه میشه که شما هم میتونید با استفاده از اون یه چیز خارق العاده دیگه بسازید، باهاش خوش باشید؛ و به هر روشی برای انتقال دانش منتشرش کنید. (البته که ذکر منبع یکی از روش هایی هست که میتونید از این پروژه حمایت کنید)</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">خروج</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./About Modal -->
 
-?>
-<!-- Footer -->
-<!-- <script>
+<script>
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
     })
@@ -282,7 +202,7 @@ mail($admin_mail, $mail_subject, $mail_message, implode("\r\n", $headers));
             btn.innerHTML = '<i class="fa fa-bug"></i>';
         }
     });
-</script> -->
+</script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
