@@ -87,3 +87,6 @@ video{
     transform: scale(1);
     visibility: visible;
 }
+h1,h2,h3,h4,h5,h6,p,input,button,a,label,span {
+    font-family: 'Vazir' !important;
+}
