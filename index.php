@@ -75,9 +75,16 @@
                             </div>
                             <div class="btn-group mx-4" role="group" aria-label="Basic example">
                                 <button type="submit" class="btn btn-primary px-4 mx-3" id="playfilm" name="playfilm">پخش ویدیو</button>
-                                <button type="reset" class="btn btn-danger px-4">پاک کردن فرم</button>
+                                <button type="reset" class="btn btn-danger">پاک کردن فرم</button>
                             </div>
                         </form>
+
+                        <hr>
+                        <button class="btn btn-block btn-info mt-2" onclick="openFileInput()">انتخاب فایل محلی</button>
+                        <div class="form-group mt-4" style="display: none;">
+                            <label for="">انتخاب فایل محلی:</label>
+                            <input type="file" id="file-input" accept="video/mp4" class="form-control" oninput="playLocalVideo(event)">
+                        </div>
                         <?php if (isset($_POST['playfilm'])) {
                             $onlinefilmurl = $_POST['filmurl'];
                             echo "<p>در حال پخش آدرس:<br></p><a href='$onlinefilmurl' title='برای دانلود کلیک کنید'><code>$onlinefilmurl</code></a>";
@@ -88,7 +95,7 @@
 
                 <div class="col-md-8">
                     <div class="player-area mt-3">
-                        <video id="my-video-stream" controls autoplay loop buffered duration volume width="100%" height="auto" preload="metadata">
+                        <video id="my-video-stream" controls loop buffered duration volume width="100%" height="auto" preload="metadata">
                             <source src="<?php if (isset($_POST['playfilm'])) {
                                                 $onlinefilmurl = $_POST['filmurl'];
                                                 echo "$onlinefilmurl";
@@ -212,6 +219,18 @@
         btn.addEventListener("click", () => {
             chatBox.classList.toggle("chatbox--is-visible");
         });
+
+        function openFileInput(event) {
+            const fileInput = document.getElementById('file-input');
+            fileInput.click();
+        }
+
+        function playLocalVideo(event) {
+            const videoPlayer = document.getElementById('my-video-stream');
+            const video = event.target.files[0];
+            const objectUrl = URL.createObjectURL(video);
+            videoPlayer.src = objectUrl;
+        }
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

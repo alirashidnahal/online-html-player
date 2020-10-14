@@ -54,7 +54,7 @@ video{
     transition: all 300ms ease;
     transform-origin: 100% 100%;
     transform: scale(0);
-    visibility: hidden;
+    display: none;
     padding: 10px;
     text-align: right;
     width: 600px;
@@ -82,10 +82,12 @@ video{
     position: absolute;
     right: 0.5em;
 }
+
+
 .chatbox--is-visible {
     opacity: 1;
     transform: scale(1);
-    visibility: visible;
+    display: block;
 }
 h1,h2,h3,h4,h5,h6,p,input,button,a,label,span {
     font-family: 'Vazir' !important;
